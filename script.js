@@ -22,6 +22,7 @@ const message = document.getElementById('message');
 const resetButton = document.getElementById('resetButton');
 const backButton = document.getElementById('backButton');
 const figureParts = document.querySelectorAll('.figure-part');
+const hangmanSvg = document.getElementById('hangmanSvg');
 
 startButton.addEventListener('click', () => {
     startScreen.style.display = 'none';
@@ -46,6 +47,10 @@ backButton.addEventListener('click', () => {
     startScreen.style.display = 'flex';
 });
 
+window.addEventListener('resize', () => {
+    adjustHangmanSize();
+});
+
 function startGame() {
     guessedLetters = [];
     mistakes = 0;
@@ -55,6 +60,7 @@ function startGame() {
     displayWord();
     createLetters();
     updateFigure();
+    adjustHangmanSize();
 }
 
 function getRandomWord() {
@@ -122,4 +128,10 @@ function updateFigure() {
             part.style.display = 'none';
         }
     });
+}
+
+function adjustHangmanSize() {
+    const containerHeight = document.querySelector('.container').offsetHeight;
+    hangmanSvg.style.height = `${containerHeight * 0.4}px`;
+    hangmanSvg.style.width = 'auto';
 }
