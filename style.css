@@ -28,6 +28,7 @@ body {
 }
 
 .container {
+    position: relative;
     text-align: center;
     background-color: #ffffff;
     padding: 20px;
@@ -66,6 +67,24 @@ button i {
 
 button:hover {
     background-color: #ff6347;
+}
+
+#backButton, #resetButton {
+    position: absolute;
+    top: 10px;
+    padding: 5px 10px;
+    font-size: 1.5em;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+}
+
+#backButton {
+    left: 10px;
+}
+
+#resetButton {
+    right: 10px;
 }
 
 #categoryContainer {
