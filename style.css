@@ -138,6 +138,7 @@ button:hover {
     cursor: pointer;
     user-select: none;
     text-align: center;
+    position: relative;
     transition: background-color 0.3s, transform 0.3s;
 }
 
