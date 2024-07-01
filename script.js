@@ -25,6 +25,8 @@ const resetButton = document.getElementById('resetButton');
 const backButton = document.getElementById('backButton');
 const figureParts = document.querySelectorAll('.figure-part');
 const hangmanSvg = document.getElementById('hangmanSvg');
+const carouselSlide = document.querySelector('.carousel-slide');
+let currentIndex = 0;
 
 startButton.addEventListener('click', () => {
     startScreen.style.display = 'none';
@@ -58,6 +60,58 @@ backButton.addEventListener('click', () => {
 window.addEventListener('resize', () => {
     adjustHangmanSize();
 });
+
+removeAdsScreen.addEventListener('touchstart', startTouch, false);
+removeAdsScreen.addEventListener('touchmove', moveTouch, false);
+
+let initialX = null;
+let initialY = null;
+
+function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+}
+
+function moveTouch(e) {
+    if (initialX === null || initialY === null) {
+        return;
+    }
+
+    let currentX = e.touches[0].clientX;
+    let currentY = e.touches[0].clientY;
+
+    let diffX = initialX - currentX;
+    let diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+            // swipe left
+            nextSlide();
+        } else {
+            // swipe right
+            prevSlide();
+        }
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+}
+
+function nextSlide() {
+    if (currentIndex < 2) {
+        currentIndex++;
+        carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+    }
+}
+
+function prevSlide() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+    }
+}
 
 function startGame() {
     guessedLetters = [];
