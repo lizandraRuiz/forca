@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Indie Flower', cursive;
     background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     margin: 0;
     padding: 0;
@@ -125,16 +125,4 @@ button:hover {
     margin-top: 20px;
     font-size: 1.5em;
     color: #ff3333;
-}
-
-.font1{
-    font-family: "Patrick Hand", cursive;
-}
-
-.font2{
-    font-family: "Indie Flower", cursive;
-}
-
-.font3{
-    font-family: "Caveat", cursive;
 }
