@@ -26,6 +26,7 @@ const backButton = document.getElementById('backButton');
 const figureParts = document.querySelectorAll('.figure-part');
 const hangmanSvg = document.getElementById('hangmanSvg');
 const carouselSlide = document.querySelector('.carousel-slide');
+const indicators = document.querySelectorAll('.indicator');
 let currentIndex = 0;
 
 startButton.addEventListener('click', () => {
@@ -59,6 +60,21 @@ backButton.addEventListener('click', () => {
 
 window.addEventListener('resize', () => {
     adjustHangmanSize();
+});
+
+document.getElementById('nextSlide').addEventListener('click', () => {
+    nextSlide();
+});
+
+document.getElementById('prevSlide').addEventListener('click', () => {
+    prevSlide();
+});
+
+indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+    });
 });
 
 removeAdsScreen.addEventListener('touchstart', startTouch, false);
@@ -102,15 +118,26 @@ function moveTouch(e) {
 function nextSlide() {
     if (currentIndex < 2) {
         currentIndex++;
-        carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+        updateCarousel();
     }
 }
 
 function prevSlide() {
     if (currentIndex > 0) {
         currentIndex--;
-        carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+        updateCarousel();
     }
+}
+
+function updateCarousel() {
+    carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+    indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+            indicator.classList.add('active');
+        } else {
+            indicator.classList.remove('active');
+        }
+    });
 }
 
 function startGame() {

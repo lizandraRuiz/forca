@@ -215,6 +215,7 @@ button:hover {
 .carousel-container {
     width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .carousel-slide {
@@ -222,9 +223,44 @@ button:hover {
     transition: transform 0.5s ease-in-out;
 }
 
-.card {
-    min-width: 100%;
-    box-sizing: border-box;
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-controls i {
+    font-size: 2em;
+    color: #ff7f50;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.carousel-controls i:hover {
+    color: #ff6347;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: #ff7f50;
 }
 
 /* Media Queries for responsiveness */
@@ -253,5 +289,14 @@ button:hover {
 
     .card {
         width: 100%;
+    }
+
+    .carousel-controls i {
+        font-size: 1.5em;
+    }
+
+    .indicator {
+        width: 8px;
+        height: 8px;
     }
 }
