@@ -74,10 +74,20 @@ function displayWord() {
     wordContainer.innerHTML = '';
     let display = chosenWord.split('').map(letter => guessedLetters.includes(letter) ? letter : '_').join(' ');
     wordContainer.textContent = display;
-
+    adjustFontSize();
+    
     if (!display.includes('_')) {
         message.textContent = 'Parabéns! Você venceu!';
         lettersContainer.innerHTML = '';
+    }
+}
+
+function adjustFontSize() {
+    let fontSize = 2; // Initial font size in em
+    wordContainer.style.fontSize = `${fontSize}em`;
+    while (wordContainer.scrollWidth > wordContainer.clientWidth && fontSize > 0.5) {
+        fontSize -= 0.1;
+        wordContainer.style.fontSize = `${fontSize}em`;
     }
 }
 
