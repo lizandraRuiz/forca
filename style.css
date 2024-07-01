@@ -56,6 +56,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
 }
 
 button i {
@@ -95,6 +96,10 @@ button:hover {
     border-radius: 5px;
     color: #555555;
     white-space: nowrap;
+}
+
+.hangman-drawing {
+    margin-bottom: 20px;
 }
 
 #hangmanContainer {

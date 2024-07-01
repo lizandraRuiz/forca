@@ -92,7 +92,7 @@ function adjustFontSize() {
 }
 
 function displayCategory() {
-    categoryContainer.textContent = `${chosenCategory}`;
+    categoryContainer.textContent = chosenCategory;
 }
 
 function createLetters() {
