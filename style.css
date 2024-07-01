@@ -125,19 +125,19 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow-y: auto;
-    max-height: 20vh;
-    padding-bottom: 10px;
+    max-width: 100%;
+    padding: 10px 0;
+    gap: 10px;
 }
 
 .letter {
-    position: relative;
     background-color: #f0f0f0;
-    margin: 5px;
-    padding: 10px 15px;
+    width: calc(100% / 10 - 10px);
+    padding: 10px 0;
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
+    text-align: center;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -154,7 +154,7 @@ button:hover {
 .letter.disabled.wrong::after {
     content: 'X';
     color: red;
-    font-size: 24px;
+    font-size: 1.5em;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -188,5 +188,10 @@ button:hover {
 
     #message {
         font-size: 1.2em;
+    }
+
+    .letter {
+        width: calc(100% / 10 - 5px);
+        padding: 8px 0;
     }
 }
