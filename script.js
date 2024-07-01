@@ -12,9 +12,11 @@ const maxMistakes = 6;
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
+const removeAdsScreen = document.getElementById('removeAdsScreen');
 const startButton = document.getElementById('startButton');
 const storeButton = document.getElementById('storeButton');
 const removeAdsButton = document.getElementById('removeAdsButton');
+const backToStartButton = document.getElementById('backToStartButton');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
@@ -35,7 +37,13 @@ storeButton.addEventListener('click', () => {
 });
 
 removeAdsButton.addEventListener('click', () => {
-    alert('Funcionalidade para remover anúncios em desenvolvimento.');
+    startScreen.style.display = 'none';
+    removeAdsScreen.style.display = 'flex';
+});
+
+backToStartButton.addEventListener('click', () => {
+    removeAdsScreen.style.display = 'none';
+    startScreen.style.display = 'flex';
 });
 
 resetButton.addEventListener('click', () => {
