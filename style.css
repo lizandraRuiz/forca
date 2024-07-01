@@ -17,6 +17,22 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#categoryContainer {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#hangmanContainer {
+    margin-bottom: 20px;
+}
+
+.figure-part {
+    display: none;
+    stroke: #000;
+    stroke-width: 4;
+}
+
 #wordContainer {
     font-size: 24px;
     margin-bottom: 20px;

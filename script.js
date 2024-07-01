@@ -1,13 +1,28 @@
-const words = ["javascript", "html", "css", "programacao", "mobile"];
-let chosenWord = words[Math.floor(Math.random() * words.length)];
+const categories = {
+    "Tecnologia": ["javascript", "html", "css", "programacao", "computador"],
+    "Animais": ["elefante", "girafa", "cachorro", "gato", "leao"],
+    "Frutas": ["banana", "maçã", "laranja", "uva", "abacaxi"]
+};
+
+let chosenCategory;
+let chosenWord;
 let guessedLetters = [];
 let mistakes = 0;
 const maxMistakes = 6;
 
+const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
 const message = document.getElementById('message');
 const resetButton = document.getElementById('resetButton');
+const figureParts = document.querySelectorAll('.figure-part');
+
+function getRandomWord() {
+    const categoriesArray = Object.keys(categories);
+    chosenCategory = categoriesArray[Math.floor(Math.random() * categoriesArray.length)];
+    const wordsArray = categories[chosenCategory];
+    chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+}
 
 function displayWord() {
     wordContainer.innerHTML = '';
@@ -18,6 +33,10 @@ function displayWord() {
         message.textContent = 'Parabéns! Você venceu!';
         lettersContainer.innerHTML = '';
     }
+}
+
+function displayCategory() {
+    categoryContainer.textContent = `Categoria: ${chosenCategory}`;
 }
 
 function createLetters() {
@@ -41,8 +60,9 @@ function guessLetter(letter) {
         displayWord();
     } else {
         mistakes++;
+        updateFigure();
         if (mistakes === maxMistakes) {
-            message.textContent = 'Você perdeu! A palavra era ' + chosenWord;
+            message.textContent = `Você perdeu! A palavra era ${chosenWord}`;
             lettersContainer.innerHTML = '';
         }
     }
@@ -51,14 +71,31 @@ function guessLetter(letter) {
     letterDiv.classList.add('disabled');
 }
 
+function updateFigure() {
+    figureParts.forEach((part, index) => {
+        const errors = mistakes;
+        if (index < errors) {
+            part.style.display = 'block';
+        } else {
+            part.style.display = 'none';
+        }
+    });
+}
+
 resetButton.addEventListener('click', () => {
-    chosenWord = words[Math.floor(Math.random() * words.length)];
     guessedLetters = [];
     mistakes = 0;
     message.textContent = '';
+    getRandomWord();
+    displayCategory();
     displayWord();
     createLetters();
+    updateFigure();
 });
 
+// Inicializar o jogo
+getRandomWord();
+displayCategory();
 displayWord();
 createLetters();
+updateFigure();
