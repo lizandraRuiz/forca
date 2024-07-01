@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#wordContainer {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#lettersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.letter {
+    background-color: #e0e0e0;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.letter.disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff0000;
+}
+
+#resetButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
