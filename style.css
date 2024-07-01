@@ -75,10 +75,14 @@ button:hover {
 #backButton, #resetButton {
     position: absolute;
     top: 10px;
-    padding: 5px 10px;
-    font-size: 1.5em;
-    width: auto;
-    height: auto;
+    font-size: 2em;
+    color: #ff7f50;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#backButton:hover, #resetButton:hover {
+    color: #ff6347;
 }
 
 #backButton {
