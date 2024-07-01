@@ -61,6 +61,8 @@ function guessLetter(letter) {
     } else {
         mistakes++;
         updateFigure();
+        let letterDiv = Array.from(lettersContainer.children).find(div => div.textContent.toLowerCase() === letter);
+        letterDiv.classList.add('disabled', 'wrong');
         if (mistakes === maxMistakes) {
             message.textContent = `Você perdeu! A palavra era ${chosenWord}`;
             lettersContainer.innerHTML = '';

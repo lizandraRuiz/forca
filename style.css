@@ -64,6 +64,7 @@ h1 {
 }
 
 .letter {
+    position: relative;
     background-color: #f0f0f0;
     margin: 5px;
     padding: 10px 15px;
@@ -81,6 +82,17 @@ h1 {
 .letter.disabled {
     background-color: #b0b0b0;
     cursor: not-allowed;
+}
+
+.letter.disabled.wrong::after {
+    content: 'X';
+    color: red;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
 }
 
 #message {
