@@ -95,6 +95,7 @@ button:hover {
     border: 2px solid #ff7f50;
     border-radius: 5px;
     color: #555555;
+    white-space: nowrap;
 }
 
 #hangmanContainer {
@@ -116,7 +117,8 @@ button:hover {
     transition: stroke-dasharray 0.3s ease-out;
 }
 
-#wordContainer {
+.word-box {
+    display: inline-block;
     font-size: 2em;
     margin-bottom: 10px;
     letter-spacing: 0.1em;
@@ -185,7 +187,7 @@ button:hover {
         padding: 5px;
     }
 
-    #wordContainer {
+    .word-box {
         font-size: 1.5em;
     }
 
