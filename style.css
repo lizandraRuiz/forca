@@ -197,8 +197,9 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    width: 80%;
+    width: 100%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 
 .card h2 {
@@ -221,6 +222,7 @@ button:hover {
 .carousel-slide {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    width: 300%; /* Three slides, so 300% width */
 }
 
 .carousel-controls {

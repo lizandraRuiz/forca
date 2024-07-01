@@ -130,7 +130,7 @@ function prevSlide() {
 }
 
 function updateCarousel() {
-    carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+    carouselSlide.style.transform = `translateX(${-currentIndex * 100 / 3}%)`;
     indicators.forEach((indicator, index) => {
         if (index === currentIndex) {
             indicator.classList.add('active');
