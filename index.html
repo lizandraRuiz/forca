@@ -5,39 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Forca</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Jogo da Forca</h1>
-        <div id="categoryContainer"></div>
-        <div id="hangmanContainer">
-            <svg height="250" width="200" class="figure-container">
-                <!-- Rod -->
-                <line x1="60" y1="20" x2="140" y2="20" />
-                <line x1="140" y1="20" x2="140" y2="50" />
-                <line x1="60" y1="20" x2="60" y2="230" />
-                <line x1="20" y1="230" x2="100" y2="230" />
+    <div id="startScreen" class="screen">
+        <h1 class="font1">Bem-vindo ao Jogo da Forca</h1>
+        <h1 class="font2">Bem-vindo ao Jogo da Forca</h1>
+        <h1 class="font3">Bem-vindo ao Jogo da Forca</h1>
+        <button id="startButton">Jogar</button>
+    </div>
+    <div id="gameScreen" class="screen" style="display: none;">
+        <div class="container">
+            <h1>Jogo da Forca</h1>
+            <div id="categoryContainer"></div>
+            <div id="hangmanContainer">
+                <svg height="250" width="200" class="figure-container">
+                    <!-- Rod -->
+                    <line x1="60" y1="20" x2="140" y2="20" />
+                    <line x1="140" y1="20" x2="140" y2="50" />
+                    <line x1="60" y1="20" x2="60" y2="230" />
+                    <line x1="20" y1="230" x2="100" y2="230" />
 
-                <!-- Head -->
-                <circle cx="140" cy="70" r="20" class="figure-part" />
+                    <!-- Head -->
+                    <circle cx="140" cy="70" r="20" class="figure-part" />
 
-                <!-- Body -->
-                <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+                    <!-- Body -->
+                    <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
 
-                <!-- Arms -->
-                <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
-                <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+                    <!-- Arms -->
+                    <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
+                    <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
 
-                <!-- Legs -->
-                <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
-                <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
-            </svg>
+                    <!-- Legs -->
+                    <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
+                    <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+                </svg>
+            </div>
+            <div id="wordContainer"></div>
+            <div id="message"></div>
+            <div id="lettersContainer"></div>
+            <button id="resetButton">Reiniciar</button>
+            <button id="backButton">Voltar</button>
         </div>
-        <div id="wordContainer"></div>
-        <div id="message"></div>
-        <div id="lettersContainer"></div>
-        <button id="resetButton">Reiniciar</button>
     </div>
     <script src="script.js"></script>
 </body>

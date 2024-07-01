@@ -10,12 +10,42 @@ let guessedLetters = [];
 let mistakes = 0;
 const maxMistakes = 6;
 
+const startScreen = document.getElementById('startScreen');
+const gameScreen = document.getElementById('gameScreen');
+const startButton = document.getElementById('startButton');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
 const message = document.getElementById('message');
 const resetButton = document.getElementById('resetButton');
+const backButton = document.getElementById('backButton');
 const figureParts = document.querySelectorAll('.figure-part');
+
+startButton.addEventListener('click', () => {
+    startScreen.style.display = 'none';
+    gameScreen.style.display = 'flex';
+    startGame();
+});
+
+resetButton.addEventListener('click', () => {
+    startGame();
+});
+
+backButton.addEventListener('click', () => {
+    gameScreen.style.display = 'none';
+    startScreen.style.display = 'flex';
+});
+
+function startGame() {
+    guessedLetters = [];
+    mistakes = 0;
+    message.textContent = '';
+    getRandomWord();
+    displayCategory();
+    displayWord();
+    createLetters();
+    updateFigure();
+}
 
 function getRandomWord() {
     const categoriesArray = Object.keys(categories);
@@ -83,21 +113,3 @@ function updateFigure() {
         }
     });
 }
-
-resetButton.addEventListener('click', () => {
-    guessedLetters = [];
-    mistakes = 0;
-    message.textContent = '';
-    getRandomWord();
-    displayCategory();
-    displayWord();
-    createLetters();
-    updateFigure();
-});
-
-// Inicializar o jogo
-getRandomWord();
-displayCategory();
-displayWord();
-createLetters();
-updateFigure();
