@@ -13,6 +13,8 @@ const maxMistakes = 6;
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const startButton = document.getElementById('startButton');
+const storeButton = document.getElementById('storeButton');
+const removeAdsButton = document.getElementById('removeAdsButton');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
@@ -25,6 +27,14 @@ startButton.addEventListener('click', () => {
     startScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
     startGame();
+});
+
+storeButton.addEventListener('click', () => {
+    alert('Bem-vindo à Loja! Funcionalidade em desenvolvimento.');
+});
+
+removeAdsButton.addEventListener('click', () => {
+    alert('Funcionalidade para remover anúncios em desenvolvimento.');
 });
 
 resetButton.addEventListener('click', () => {
