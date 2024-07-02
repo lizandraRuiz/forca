@@ -232,6 +232,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
+    padding: 0 10px; /* Adding padding to create space between arrows and the container */
 }
 
 .carousel-controls i {
