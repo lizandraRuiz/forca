@@ -30,6 +30,12 @@ body {
     text-align: center;
     padding: 20px;
     overflow-y: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.screen::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
 }
 
 .container {
@@ -355,6 +361,12 @@ button:hover {
     margin-top: 20px;
     max-height: calc(100vh - 150px);
     overflow-y: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.store-container::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
 }
 
 /* Modal styles */
