@@ -85,8 +85,6 @@ resetButton.addEventListener('click', () => {
 backButton.addEventListener('click', () => {
     gameScreen.style.display = 'none';
     startScreen.style.display = 'flex';
-    wordsCount = 0;
-    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
 });
 
 continueButton.addEventListener('click', () => {
