@@ -14,39 +14,39 @@ let recordCount = 0;
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
-const winModal = document.getElementById('winModal');
-const loseModal = document.getElementById('loseModal');
-const storeScreen = document.getElementById('storeScreen');
 const removeAdsScreen = document.getElementById('removeAdsScreen');
 const startButton = document.getElementById('startButton');
 const storeButton = document.getElementById('storeButton');
 const removeAdsButton = document.getElementById('removeAdsButton');
 const backToStartButton = document.getElementById('backToStartButton');
 const backToStartButtonStore = document.getElementById('backToStartButtonStore');
-const continueButton = document.getElementById('continueButton');
-const tryAgainButton = document.getElementById('tryAgainButton');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
 const message = document.getElementById('message');
 const resetButton = document.getElementById('resetButton');
 const backButton = document.getElementById('backButton');
+const infoButton = document.getElementById('infoButton');
 const figureParts = document.querySelectorAll('.figure-part');
 const hangmanSvg = document.getElementById('hangmanSvg');
 const carouselSlide = document.querySelector('.carousel-slide');
 const indicators = document.querySelectorAll('.indicator');
-const infoButton = document.getElementById('infoButton');
-const modal = document.getElementById("infoModal");
-const closeBtn = document.getElementsByClassName("close")[0];
-const resetConfirmModal = document.getElementById("resetConfirmModal");
-const closeResetBtn = document.getElementsByClassName("close-reset")[0];
-const confirmResetButton = document.getElementById("confirmResetButton");
-const closeWinBtn = document.getElementsByClassName("close-win")[0];
-const closeLoseBtn = document.getElementsByClassName("close-lose")[0];
-const wordsCountDisplay = document.getElementById('wordsCount');
-const recordCountDisplay = document.getElementById('recordCount');
-const wordsCountModalDisplay = document.getElementById('wordsCountModal');
-const correctWordDisplay = document.getElementById('correctWord');
+const wordsCountElement = document.getElementById('wordsCount');
+const recordCountElement = document.getElementById('recordCount');
+
+const infoModal = document.getElementById('infoModal');
+const resetConfirmModal = document.getElementById('resetConfirmModal');
+const winModal = document.getElementById('winModal');
+const loseModal = document.getElementById('loseModal');
+
+const closeInfoModal = document.querySelector('.close');
+const closeResetModal = document.querySelector('.close-reset');
+const closeWinModal = document.querySelector('.close-win');
+const closeLoseModal = document.querySelector('.close-lose');
+
+const confirmResetButton = document.getElementById('confirmResetButton');
+const continueButton = document.getElementById('continueButton');
+const tryAgainButton = document.getElementById('tryAgainButton');
 let currentIndex = 0;
 
 startButton.addEventListener('click', () => {
@@ -57,7 +57,7 @@ startButton.addEventListener('click', () => {
 
 storeButton.addEventListener('click', () => {
     startScreen.style.display = 'none';
-    storeScreen.style.display = 'flex';
+    removeAdsScreen.style.display = 'flex';
 });
 
 removeAdsButton.addEventListener('click', () => {
@@ -71,16 +71,15 @@ backToStartButton.addEventListener('click', () => {
 });
 
 backToStartButtonStore.addEventListener('click', () => {
-    storeScreen.style.display = 'none';
+    removeAdsScreen.style.display = 'none';
     startScreen.style.display = 'flex';
 });
 
 resetButton.addEventListener('click', () => {
     if (wordsCount > 0) {
-        wordsCountModalDisplay.textContent = wordsCount;
-        resetConfirmModal.style.display = "block";
+        resetConfirmModal.style.display = 'block';
     } else {
-        resetGame();
+        startGame();
     }
 });
 
@@ -89,48 +88,51 @@ backButton.addEventListener('click', () => {
     startScreen.style.display = 'flex';
 });
 
-continueButton.addEventListener('click', () => {
-    winModal.style.display = "none";
-    gameScreen.style.display = 'flex';
+infoButton.addEventListener('click', () => {
+    infoModal.style.display = 'block';
+});
+
+closeInfoModal.addEventListener('click', () => {
+    infoModal.style.display = 'none';
+});
+
+closeResetModal.addEventListener('click', () => {
+    resetConfirmModal.style.display = 'none';
+});
+
+closeWinModal.addEventListener('click', () => {
+    winModal.style.display = 'none';
     startGame();
 });
 
-tryAgainButton.addEventListener('click', () => {
-    loseModal.style.display = "none";
-    gameScreen.style.display = 'flex';
-    if (wordsCount > recordCount) {
-        recordCount = wordsCount;
-        recordCountDisplay.textContent = `Recorde: ${recordCount}`;
-    }
+closeLoseModal.addEventListener('click', () => {
+    loseModal.style.display = 'none';
     wordsCount = 0;
-    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
+    updateCounts();
     startGame();
 });
 
 confirmResetButton.addEventListener('click', () => {
-    resetConfirmModal.style.display = "none";
-    resetGame();
-});
-
-closeResetBtn.addEventListener('click', () => {
-    resetConfirmModal.style.display = "none";
-});
-
-closeWinBtn.addEventListener('click', () => {
-    winModal.style.display = "none";
-    gameScreen.style.display = 'flex';
+    resetConfirmModal.style.display = 'none';
+    wordsCount = 0;
+    updateCounts();
     startGame();
 });
 
-closeLoseBtn.addEventListener('click', () => {
-    loseModal.style.display = "none";
-    gameScreen.style.display = 'flex';
+continueButton.addEventListener('click', () => {
+    winModal.style.display = 'none';
+    wordsCount++;
     if (wordsCount > recordCount) {
         recordCount = wordsCount;
-        recordCountDisplay.textContent = `Recorde: ${recordCount}`;
     }
+    updateCounts();
+    startGame();
+});
+
+tryAgainButton.addEventListener('click', () => {
+    loseModal.style.display = 'none';
     wordsCount = 0;
-    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
+    updateCounts();
     startGame();
 });
 
@@ -155,20 +157,6 @@ indicators.forEach((indicator, index) => {
 
 removeAdsScreen.addEventListener('touchstart', startTouch, false);
 removeAdsScreen.addEventListener('touchmove', moveTouch, false);
-
-infoButton.addEventListener('click', () => {
-    modal.style.display = "block";
-});
-
-closeBtn.addEventListener('click', () => {
-    modal.style.display = "none";
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-});
 
 let initialX = null;
 let initialY = null;
@@ -206,17 +194,27 @@ function moveTouch(e) {
 }
 
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % indicators.length;
-    updateCarousel();
+    if (currentIndex < 2) {
+        currentIndex++;
+        updateCarousel();
+    } else {
+        currentIndex = 0;
+        updateCarousel();
+    }
 }
 
 function prevSlide() {
-    currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
-    updateCarousel();
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    } else {
+        currentIndex = 2;
+        updateCarousel();
+    }
 }
 
 function updateCarousel() {
-    carouselSlide.style.transform = `translateX(${-currentIndex * 100 / indicators.length}%)`;
+    carouselSlide.style.transform = `translateX(${-currentIndex * 100 / 3}%)`;
     indicators.forEach((indicator, index) => {
         if (index === currentIndex) {
             indicator.classList.add('active');
@@ -252,10 +250,11 @@ function displayWord() {
     adjustFontSize();
     
     if (!display.includes('_')) {
-        message.textContent = '';
-        winModal.style.display = 'block';
-        wordsCount++;
-        wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
+        message.textContent = 'Parabéns! Você venceu!';
+        lettersContainer.innerHTML = '';
+        setTimeout(() => {
+            winModal.style.display = 'block';
+        }, 1000);
     }
 }
 
@@ -297,9 +296,12 @@ function guessLetter(letter) {
         let letterDiv = Array.from(lettersContainer.children).find(div => div.textContent.toLowerCase() === letter);
         letterDiv.classList.add('disabled', 'wrong');
         if (mistakes === maxMistakes) {
-            correctWordDisplay.textContent = chosenWord;
-            loseModal.style.display = 'block';
+            message.textContent = `Você perdeu! A palavra era ${chosenWord}`;
             lettersContainer.innerHTML = '';
+            document.getElementById('correctWord').textContent = chosenWord;
+            setTimeout(() => {
+                loseModal.style.display = 'block';
+            }, 1000);
         }
     }
 
@@ -324,12 +326,7 @@ function adjustHangmanSize() {
     hangmanSvg.style.width = 'auto';
 }
 
-function resetGame() {
-    if (wordsCount > recordCount) {
-        recordCount = wordsCount;
-        recordCountDisplay.textContent = `Recorde: ${recordCount}`;
-    }
-    wordsCount = 0;
-    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
-    startGame();
+function updateCounts() {
+    wordsCountElement.querySelector('.count-box').innerHTML = `${wordsCount} <i class="bi bi-check-lg laranja"></i>`;
+    recordCountElement.querySelector('.count-box').innerHTML = `${recordCount} <i class="bi bi-trophy laranja"></i>`;
 }
