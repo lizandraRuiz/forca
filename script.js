@@ -14,6 +14,7 @@ let wordsCount = 0;
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const winScreen = document.getElementById('winScreen');
+const loseScreen = document.getElementById('loseScreen');
 const storeScreen = document.getElementById('storeScreen');
 const removeAdsScreen = document.getElementById('removeAdsScreen');
 const startButton = document.getElementById('startButton');
@@ -22,6 +23,7 @@ const removeAdsButton = document.getElementById('removeAdsButton');
 const backToStartButton = document.getElementById('backToStartButton');
 const backToStartButtonStore = document.getElementById('backToStartButtonStore');
 const continueButton = document.getElementById('continueButton');
+const tryAgainButton = document.getElementById('tryAgainButton');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
@@ -36,6 +38,7 @@ const infoButton = document.getElementById('infoButton');
 const modal = document.getElementById("infoModal");
 const closeBtn = document.getElementsByClassName("close")[0];
 const wordsCountDisplay = document.getElementById('wordsCount');
+const correctWordDisplay = document.getElementById('correctWord');
 let currentIndex = 0;
 
 startButton.addEventListener('click', () => {
@@ -71,11 +74,21 @@ resetButton.addEventListener('click', () => {
 backButton.addEventListener('click', () => {
     gameScreen.style.display = 'none';
     startScreen.style.display = 'flex';
+    wordsCount = 0;
+    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
 });
 
 continueButton.addEventListener('click', () => {
     winScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
+    startGame();
+});
+
+tryAgainButton.addEventListener('click', () => {
+    loseScreen.style.display = 'none';
+    gameScreen.style.display = 'flex';
+    wordsCount = 0;
+    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     startGame();
 });
 
@@ -247,7 +260,9 @@ function guessLetter(letter) {
         let letterDiv = Array.from(lettersContainer.children).find(div => div.textContent.toLowerCase() === letter);
         letterDiv.classList.add('disabled', 'wrong');
         if (mistakes === maxMistakes) {
-            message.textContent = `Você perdeu! A palavra era ${chosenWord}`;
+            correctWordDisplay.textContent = chosenWord;
+            loseScreen.style.display = 'flex';
+            gameScreen.style.display = 'none';
             lettersContainer.innerHTML = '';
         }
     }
