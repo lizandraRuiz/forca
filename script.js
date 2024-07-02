@@ -37,7 +37,11 @@ const indicators = document.querySelectorAll('.indicator');
 const infoButton = document.getElementById('infoButton');
 const modal = document.getElementById("infoModal");
 const closeBtn = document.getElementsByClassName("close")[0];
+const resetConfirmModal = document.getElementById("resetConfirmModal");
+const closeResetBtn = document.getElementsByClassName("close-reset")[0];
+const confirmResetButton = document.getElementById("confirmResetButton");
 const wordsCountDisplay = document.getElementById('wordsCount');
+const wordsCountModalDisplay = document.getElementById('wordsCountModal');
 const correctWordDisplay = document.getElementById('correctWord');
 let currentIndex = 0;
 
@@ -68,7 +72,12 @@ backToStartButtonStore.addEventListener('click', () => {
 });
 
 resetButton.addEventListener('click', () => {
-    startGame();
+    if (wordsCount > 0) {
+        wordsCountModalDisplay.textContent = wordsCount;
+        resetConfirmModal.style.display = "block";
+    } else {
+        resetGame();
+    }
 });
 
 backButton.addEventListener('click', () => {
@@ -90,6 +99,15 @@ tryAgainButton.addEventListener('click', () => {
     wordsCount = 0;
     wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     startGame();
+});
+
+confirmResetButton.addEventListener('click', () => {
+    resetConfirmModal.style.display = "none";
+    resetGame();
+});
+
+closeResetBtn.addEventListener('click', () => {
+    resetConfirmModal.style.display = "none";
 });
 
 window.addEventListener('resize', () => {
@@ -286,4 +304,10 @@ function adjustHangmanSize() {
     const containerHeight = document.querySelector('.container').offsetHeight;
     hangmanSvg.style.height = `${containerHeight * 0.4}px`;
     hangmanSvg.style.width = 'auto';
+}
+
+function resetGame() {
+    wordsCount = 0;
+    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
+    startGame();
 }
