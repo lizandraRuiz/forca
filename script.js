@@ -115,11 +115,15 @@ closeResetBtn.addEventListener('click', () => {
 closeWinBtn.addEventListener('click', () => {
     winModal.style.display = "none";
     gameScreen.style.display = 'flex';
+    startGame();
 });
 
 closeLoseBtn.addEventListener('click', () => {
     loseModal.style.display = "none";
     gameScreen.style.display = 'flex';
+    wordsCount = 0;
+    wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
+    startGame();
 });
 
 window.addEventListener('resize', () => {
