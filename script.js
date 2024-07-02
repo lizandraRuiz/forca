@@ -196,21 +196,17 @@ function moveTouch(e) {
 }
 
 function nextSlide() {
-    if (currentIndex < 2) {
-        currentIndex++;
-        updateCarousel();
-    }
+    currentIndex = (currentIndex + 1) % indicators.length;
+    updateCarousel();
 }
 
 function prevSlide() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-    }
+    currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
+    updateCarousel();
 }
 
 function updateCarousel() {
-    carouselSlide.style.transform = `translateX(${-currentIndex * 100 / 3}%)`;
+    carouselSlide.style.transform = `translateX(${-currentIndex * 100 / indicators.length}%)`;
     indicators.forEach((indicator, index) => {
         if (index === currentIndex) {
             indicator.classList.add('active');
