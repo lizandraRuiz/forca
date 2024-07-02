@@ -375,6 +375,12 @@ button:hover {
     margin-top: 10px;
 }
 
+.record-count {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 10px;
+}
+
 /* Modal styles */
 .modal {
     display: none;

@@ -10,6 +10,7 @@ let guessedLetters = [];
 let mistakes = 0;
 const maxMistakes = 6;
 let wordsCount = 0;
+let recordCount = 0;
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
@@ -43,6 +44,7 @@ const confirmResetButton = document.getElementById("confirmResetButton");
 const closeWinBtn = document.getElementsByClassName("close-win")[0];
 const closeLoseBtn = document.getElementsByClassName("close-lose")[0];
 const wordsCountDisplay = document.getElementById('wordsCount');
+const recordCountDisplay = document.getElementById('recordCount');
 const wordsCountModalDisplay = document.getElementById('wordsCountModal');
 const correctWordDisplay = document.getElementById('correctWord');
 let currentIndex = 0;
@@ -96,6 +98,10 @@ continueButton.addEventListener('click', () => {
 tryAgainButton.addEventListener('click', () => {
     loseModal.style.display = "none";
     gameScreen.style.display = 'flex';
+    if (wordsCount > recordCount) {
+        recordCount = wordsCount;
+        recordCountDisplay.textContent = `Recorde: ${recordCount}`;
+    }
     wordsCount = 0;
     wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     startGame();
@@ -119,6 +125,10 @@ closeWinBtn.addEventListener('click', () => {
 closeLoseBtn.addEventListener('click', () => {
     loseModal.style.display = "none";
     gameScreen.style.display = 'flex';
+    if (wordsCount > recordCount) {
+        recordCount = wordsCount;
+        recordCountDisplay.textContent = `Recorde: ${recordCount}`;
+    }
     wordsCount = 0;
     wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     startGame();
@@ -315,6 +325,10 @@ function adjustHangmanSize() {
 }
 
 function resetGame() {
+    if (wordsCount > recordCount) {
+        recordCount = wordsCount;
+        recordCountDisplay.textContent = `Recorde: ${recordCount}`;
+    }
     wordsCount = 0;
     wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     startGame();
