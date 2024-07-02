@@ -434,6 +434,40 @@ button:hover {
     cursor: pointer;
 }
 
+/* Win Modal styles */
+.close-win {
+    color: #aaa;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.close-win:hover,
+.close-win:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Lose Modal styles */
+.close-lose {
+    color: #aaa;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.close-lose:hover,
+.close-lose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 600px) {
     button {

@@ -13,8 +13,8 @@ let wordsCount = 0;
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
-const winScreen = document.getElementById('winScreen');
-const loseScreen = document.getElementById('loseScreen');
+const winModal = document.getElementById('winModal');
+const loseModal = document.getElementById('loseModal');
 const storeScreen = document.getElementById('storeScreen');
 const removeAdsScreen = document.getElementById('removeAdsScreen');
 const startButton = document.getElementById('startButton');
@@ -40,6 +40,8 @@ const closeBtn = document.getElementsByClassName("close")[0];
 const resetConfirmModal = document.getElementById("resetConfirmModal");
 const closeResetBtn = document.getElementsByClassName("close-reset")[0];
 const confirmResetButton = document.getElementById("confirmResetButton");
+const closeWinBtn = document.getElementsByClassName("close-win")[0];
+const closeLoseBtn = document.getElementsByClassName("close-lose")[0];
 const wordsCountDisplay = document.getElementById('wordsCount');
 const wordsCountModalDisplay = document.getElementById('wordsCountModal');
 const correctWordDisplay = document.getElementById('correctWord');
@@ -88,13 +90,13 @@ backButton.addEventListener('click', () => {
 });
 
 continueButton.addEventListener('click', () => {
-    winScreen.style.display = 'none';
+    winModal.style.display = "none";
     gameScreen.style.display = 'flex';
     startGame();
 });
 
 tryAgainButton.addEventListener('click', () => {
-    loseScreen.style.display = 'none';
+    loseModal.style.display = "none";
     gameScreen.style.display = 'flex';
     wordsCount = 0;
     wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
@@ -108,6 +110,16 @@ confirmResetButton.addEventListener('click', () => {
 
 closeResetBtn.addEventListener('click', () => {
     resetConfirmModal.style.display = "none";
+});
+
+closeWinBtn.addEventListener('click', () => {
+    winModal.style.display = "none";
+    gameScreen.style.display = 'flex';
+});
+
+closeLoseBtn.addEventListener('click', () => {
+    loseModal.style.display = "none";
+    gameScreen.style.display = 'flex';
 });
 
 window.addEventListener('resize', () => {
@@ -233,8 +245,7 @@ function displayWord() {
     
     if (!display.includes('_')) {
         message.textContent = '';
-        winScreen.style.display = 'flex';
-        gameScreen.style.display = 'none';
+        winModal.style.display = 'block';
         wordsCount++;
         wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     }
@@ -279,8 +290,7 @@ function guessLetter(letter) {
         letterDiv.classList.add('disabled', 'wrong');
         if (mistakes === maxMistakes) {
             correctWordDisplay.textContent = chosenWord;
-            loseScreen.style.display = 'flex';
-            gameScreen.style.display = 'none';
+            loseModal.style.display = 'block';
             lettersContainer.innerHTML = '';
         }
     }
