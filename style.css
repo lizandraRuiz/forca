@@ -51,6 +51,14 @@ body {
     overflow: hidden;
 }
 
+.header-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
 button {
     padding: 10px 20px;
     font-size: 1em;
@@ -101,20 +109,13 @@ button:hover {
     color: #ff6347;
 }
 
-#backButton {
+.top-left-icons {
+    position: absolute;
+    top: 10px;
     left: 10px;
-}
-
-#resetButton {
-    left: 50px; /* Adjust this value as needed */
-}
-
-#infoButton {
-    left: 90px; /* Adjust this value as needed */
-}
-
-#backToStartButton, #backToStartButtonStore {
-    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .category-box {
@@ -315,27 +316,21 @@ button:hover {
     padding: 2px;
     font-size: 1em;
     color: #333;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: 5px;
+    white-space: nowrap;
 }
 
-.side-icons i {
-    font-size: 1.5em;
+.side-icons i, .laranja {
+    font-size: 1em;
     color: #ff7f50;
     cursor: pointer;
     transition: color 0.3s;
 }
 
-.side-icons i:hover {
+.side-icons i:hover, .laranja:hover {
     color: #ff6347;
-}
-
-.top-left-icons {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    gap: 10px;
 }
 
 .subscribe-button {
@@ -521,7 +516,7 @@ button:hover {
     }
 
     .side-icons i {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .top-left-icons {
@@ -531,4 +526,17 @@ button:hover {
     .modal-content {
         width: 90%;
     }
+}
+
+.count-box {
+    background-color: #fff3e0;
+    border: 2px solid #ff7f50;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 1em;
+    color: #333;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
 }

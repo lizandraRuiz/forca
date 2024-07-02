@@ -13,7 +13,7 @@
         <svg class="hangman-drawing" width="100" height="200">
             <line x1="10" y1="190" x2="90" y2="190" style="stroke:#000;stroke-width:2" />
             <line x1="50" y1="10" x2="50" y2="190" style="stroke:#000;stroke-width:2" />
-            <line x1="50" y1="10" x2="90" y2="10" style="stroke:#000;stroke-width:2" />
+            <line x1="50" y1="10" x2="90" y1="10" style="stroke:#000;stroke-width:2" />
             <line x1="90" y1="10" x2="90" y2="50" style="stroke:#000;stroke-width:2" />
             <circle cx="90" cy="70" r="20" style="stroke:#000;stroke-width:2;fill:none" />
         </svg>
@@ -29,8 +29,14 @@
                 <i id="resetButton" class="bi bi-arrow-clockwise"></i>
                 <i id="infoButton" class="bi bi-info-circle"></i>
             </div>
-            <div>
+            <div class="header-info">
                 <span id="categoryContainer" class="category-box"></span>
+                <div id="wordsCount" class="words-count">
+                    <div class="count-box">0 <i class="bi bi-check-lg laranja"></i></div>
+                </div>
+                <div id="recordCount" class="record-count">
+                    <div class="count-box">0 <i class="bi bi-trophy laranja"></i></div>
+                </div>
             </div>
             <div id="hangmanContainer">
                 <svg id="hangmanSvg" class="figure-container">
@@ -72,8 +78,6 @@
                     <div class="quantity-box">5 <i class="bi bi-file-excel-fill"></i></div>
                 </div>
             </div>
-            <div id="wordsCount" class="words-count">Palavras acertadas: 0</div>
-            <div id="recordCount" class="record-count">Recorde: 0</div>
         </div>
     </div>
     <div id="storeScreen" class="screen" style="display: none;">
@@ -127,20 +131,20 @@
                 </div>
                 <div class="card">
                     <h2>Plano Premium</h2>
-                    <p><i class="bi bi-lightbulb-fill"></i> 5 x Dicas</p>
-                    <p><i class="bi bi-eraser-fill"></i> 5 x Apaga Erro</p>
-                    <p><i class="bi bi-file-excel-fill"></i> 5 x Mostrar 3 Letras Erradas</p>
+                    <p>5 x Dicas <i class="bi bi-lightbulb-fill"></i></p>
+                    <p>5 x Apaga Erro <i class="bi bi-eraser-fill"></i></p>
+                    <p>5 x Mostrar 3 Letras Erradas <i class="bi bi-file-excel-fill"></i></p>
                     <p><i class="bi bi-ban"></i> Remoção de anúncios</p>
-                    <p><i class="bi bi-journal-text"></i> Libera todas as categorias de palavras</p>
+                    <p>Libera todas as categorias de palavras <i class="bi bi-journal-text"></i></p>
                 </div>
                 <div class="card">
                     <h2>Plano Ouro</h2>
-                    <p><i class="bi bi-coin"></i> 500 x Moedas</p>
-                    <p><i class="bi bi-lightbulb-fill"></i> 5 x Dicas</p>
-                    <p><i class="bi bi-eraser-fill"></i> 5 x Apaga Erro</p>
-                    <p><i class="bi bi-file-excel-fill"></i> 5 x Mostrar 3 Letras Erradas</p>
+                    <p>500 x Moedas <i class="bi bi-coin"></i></p>
+                    <p>5 x Dicas <i class="bi bi-lightbulb-fill"></i></p>
+                    <p>5 x Apaga Erro <i class="bi bi-eraser-fill"></i></p>
+                    <p>5 x Mostrar 3 Letras Erradas <i class="bi bi-file-excel-fill"></i></p>
                     <p><i class="bi bi-ban"></i> Remoção de anúncios</p>
-                    <p><i class="bi bi-journal-text"></i> Libera todas as categorias de palavras</p>
+                    <p>Libera todas as categorias de palavras <i class="bi bi-journal-text"></i></p>
                 </div>
             </div>
             <div class="carousel-controls">
