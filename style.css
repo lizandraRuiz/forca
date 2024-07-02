@@ -68,8 +68,6 @@ button:hover {
 }
 
 #backButton, #resetButton, #backToStartButton {
-    position: absolute;
-    top: 10px;
     font-size: 2em;
     color: #ff7f50;
     cursor: pointer;
@@ -85,7 +83,7 @@ button:hover {
 }
 
 #resetButton {
-    right: 10px;
+    left: 50px; /* Adjust this value as needed */
 }
 
 #backToStartButton {
@@ -266,6 +264,34 @@ button:hover {
     background-color: #ff7f50;
 }
 
+.side-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.side-icons i {
+    font-size: 1.5em;
+    color: #ff7f50;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.side-icons i:hover {
+    color: #ff6347;
+}
+
+.top-left-icons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 600px) {
     button {
@@ -301,5 +327,13 @@ button:hover {
     .indicator {
         width: 8px;
         height: 8px;
+    }
+
+    .side-icons i {
+        font-size: 1.2em;
+    }
+
+    .top-left-icons {
+        gap: 5px;
     }
 }
