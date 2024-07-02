@@ -369,6 +369,12 @@ button:hover {
     display: none;  /* Safari and Chrome */
 }
 
+.words-count {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 10px;
+}
+
 /* Modal styles */
 .modal {
     display: none;

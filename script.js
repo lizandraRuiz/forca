@@ -9,9 +9,11 @@ let chosenWord;
 let guessedLetters = [];
 let mistakes = 0;
 const maxMistakes = 6;
+let wordsCount = 0;
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
+const winScreen = document.getElementById('winScreen');
 const storeScreen = document.getElementById('storeScreen');
 const removeAdsScreen = document.getElementById('removeAdsScreen');
 const startButton = document.getElementById('startButton');
@@ -19,6 +21,7 @@ const storeButton = document.getElementById('storeButton');
 const removeAdsButton = document.getElementById('removeAdsButton');
 const backToStartButton = document.getElementById('backToStartButton');
 const backToStartButtonStore = document.getElementById('backToStartButtonStore');
+const continueButton = document.getElementById('continueButton');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
@@ -32,6 +35,7 @@ const indicators = document.querySelectorAll('.indicator');
 const infoButton = document.getElementById('infoButton');
 const modal = document.getElementById("infoModal");
 const closeBtn = document.getElementsByClassName("close")[0];
+const wordsCountDisplay = document.getElementById('wordsCount');
 let currentIndex = 0;
 
 startButton.addEventListener('click', () => {
@@ -67,6 +71,12 @@ resetButton.addEventListener('click', () => {
 backButton.addEventListener('click', () => {
     gameScreen.style.display = 'none';
     startScreen.style.display = 'flex';
+});
+
+continueButton.addEventListener('click', () => {
+    winScreen.style.display = 'none';
+    gameScreen.style.display = 'flex';
+    startGame();
 });
 
 window.addEventListener('resize', () => {
@@ -191,8 +201,11 @@ function displayWord() {
     adjustFontSize();
     
     if (!display.includes('_')) {
-        message.textContent = 'Parabéns! Você venceu!';
-        lettersContainer.innerHTML = '';
+        message.textContent = '';
+        winScreen.style.display = 'flex';
+        gameScreen.style.display = 'none';
+        wordsCount++;
+        wordsCountDisplay.textContent = `Palavras acertadas: ${wordsCount}`;
     }
 }
 
