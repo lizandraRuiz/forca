@@ -277,6 +277,24 @@ button:hover {
     gap: 10px;
 }
 
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.quantity-box {
+    background-color: #fff3e0;
+    border: 2px solid #ff7f50;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 1em;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
 .side-icons i {
     font-size: 1.5em;
     color: #ff7f50;
