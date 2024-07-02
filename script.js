@@ -12,11 +12,13 @@ const maxMistakes = 6;
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
+const storeScreen = document.getElementById('storeScreen');
 const removeAdsScreen = document.getElementById('removeAdsScreen');
 const startButton = document.getElementById('startButton');
 const storeButton = document.getElementById('storeButton');
 const removeAdsButton = document.getElementById('removeAdsButton');
 const backToStartButton = document.getElementById('backToStartButton');
+const backToStartButtonStore = document.getElementById('backToStartButtonStore');
 const categoryContainer = document.getElementById('categoryContainer');
 const wordContainer = document.getElementById('wordContainer');
 const lettersContainer = document.getElementById('lettersContainer');
@@ -27,6 +29,9 @@ const figureParts = document.querySelectorAll('.figure-part');
 const hangmanSvg = document.getElementById('hangmanSvg');
 const carouselSlide = document.querySelector('.carousel-slide');
 const indicators = document.querySelectorAll('.indicator');
+const infoButton = document.getElementById('infoButton');
+const modal = document.getElementById("infoModal");
+const closeBtn = document.getElementsByClassName("close")[0];
 let currentIndex = 0;
 
 startButton.addEventListener('click', () => {
@@ -36,7 +41,8 @@ startButton.addEventListener('click', () => {
 });
 
 storeButton.addEventListener('click', () => {
-    alert('Bem-vindo à Loja! Funcionalidade em desenvolvimento.');
+    startScreen.style.display = 'none';
+    storeScreen.style.display = 'flex';
 });
 
 removeAdsButton.addEventListener('click', () => {
@@ -46,6 +52,11 @@ removeAdsButton.addEventListener('click', () => {
 
 backToStartButton.addEventListener('click', () => {
     removeAdsScreen.style.display = 'none';
+    startScreen.style.display = 'flex';
+});
+
+backToStartButtonStore.addEventListener('click', () => {
+    storeScreen.style.display = 'none';
     startScreen.style.display = 'flex';
 });
 
@@ -79,6 +90,20 @@ indicators.forEach((indicator, index) => {
 
 removeAdsScreen.addEventListener('touchstart', startTouch, false);
 removeAdsScreen.addEventListener('touchmove', moveTouch, false);
+
+infoButton.addEventListener('click', () => {
+    modal.style.display = "block";
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+});
 
 let initialX = null;
 let initialY = null;
@@ -234,22 +259,3 @@ function adjustHangmanSize() {
     hangmanSvg.style.height = `${containerHeight * 0.4}px`;
     hangmanSvg.style.width = 'auto';
 }
-
-// Modal functionality
-const infoButton = document.getElementById('infoButton');
-const infoModal = document.getElementById('infoModal');
-const closeModal = document.querySelector('.modal .close');
-
-infoButton.addEventListener('click', () => {
-    infoModal.style.display = 'block';
-});
-
-closeModal.addEventListener('click', () => {
-    infoModal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === infoModal) {
-        infoModal.style.display = 'none';
-    }
-});
