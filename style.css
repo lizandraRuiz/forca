@@ -67,14 +67,14 @@ button:hover {
     background-color: #ff6347;
 }
 
-#backButton, #resetButton, #backToStartButton {
+#backButton, #resetButton, #infoButton, #backToStartButton {
     font-size: 2em;
     color: #ff7f50;
     cursor: pointer;
     transition: color 0.3s;
 }
 
-#backButton:hover, #resetButton:hover, #backToStartButton:hover {
+#backButton:hover, #resetButton:hover, #infoButton:hover, #backToStartButton:hover {
     color: #ff6347;
 }
 
@@ -84,6 +84,10 @@ button:hover {
 
 #resetButton {
     left: 50px; /* Adjust this value as needed */
+}
+
+#infoButton {
+    left: 90px; /* Adjust this value as needed */
 }
 
 #backToStartButton {
@@ -292,6 +296,45 @@ button:hover {
     gap: 10px;
 }
 
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 600px) {
     button {
@@ -335,5 +378,9 @@ button:hover {
 
     .top-left-icons {
         gap: 5px;
+    }
+
+    .modal-content {
+        width: 90%;
     }
 }

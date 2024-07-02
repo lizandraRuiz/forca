@@ -234,3 +234,22 @@ function adjustHangmanSize() {
     hangmanSvg.style.height = `${containerHeight * 0.4}px`;
     hangmanSvg.style.width = 'auto';
 }
+
+// Modal functionality
+const infoButton = document.getElementById('infoButton');
+const infoModal = document.getElementById('infoModal');
+const closeModal = document.querySelector('.modal .close');
+
+infoButton.addEventListener('click', () => {
+    infoModal.style.display = 'block';
+});
+
+closeModal.addEventListener('click', () => {
+    infoModal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === infoModal) {
+        infoModal.style.display = 'none';
+    }
+});
