@@ -13,9 +13,12 @@ let wordsCount = 0;
 let recordCount = 0;
 let coinCount = 0;
 
-// Load coin count from localStorage
+// Load coin count and record count from localStorage
 if (localStorage.getItem('coinCount')) {
     coinCount = parseInt(localStorage.getItem('coinCount'), 10);
+}
+if (localStorage.getItem('recordCount')) {
+    recordCount = parseInt(localStorage.getItem('recordCount'), 10);
 }
 
 const startScreen = document.getElementById('startScreen');
@@ -284,6 +287,7 @@ function startGame() {
     createLetters();
     updateFigure();
     adjustHangmanSize();
+    updateCounts(); // Update counts on game start
 }
 
 function getRandomWord() {
@@ -380,8 +384,9 @@ function updateCounts() {
     wordsCountElement.innerHTML = `${wordsCount} <i class="bi bi-check-lg laranja"></i>`;
     recordCountElement.innerHTML = `${recordCount} <i class="bi bi-trophy laranja"></i>`;
     coinCountElement.innerHTML = `${coinCount} <i class="bi bi-coin"></i>`;
-    // Save coin count to localStorage
+    // Save coin count and record count to localStorage
     localStorage.setItem('coinCount', coinCount);
+    localStorage.setItem('recordCount', recordCount);
 }
 
 function continueGame() {
@@ -395,6 +400,9 @@ function continueGame() {
     updateCounts();
     startGame();
 }
+
+// Initial update to display the loaded coin count and record count
+updateCounts();
 
 // Initial call to hide prevSlide button
 updateCarousel();
