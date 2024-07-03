@@ -247,6 +247,13 @@ function updateCarousel() {
         }
     });
 
+    const carouselControls = document.querySelector('.carousel-controls');
+    if (currentIndex === 0) {
+        carouselControls.classList.add('first-slide');
+    } else {
+        carouselControls.classList.remove('first-slide');
+    }
+
     if (currentIndex === 0) {
         document.getElementById('prevSlide').style.display = 'none';
     } else {

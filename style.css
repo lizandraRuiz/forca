@@ -267,6 +267,10 @@ button:hover {
     padding: 0 10px; /* Adding padding to create space between arrows and the container */
 }
 
+.carousel-controls.first-slide {
+    justify-content: end;
+}
+
 .carousel-controls i {
     font-size: 2em;
     color: #ff7f50;
