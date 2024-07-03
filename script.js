@@ -11,6 +11,12 @@ let mistakes = 0;
 const maxMistakes = 6;
 let wordsCount = 0;
 let recordCount = 0;
+let coinCount = 0;
+
+// Load coin count from localStorage
+if (localStorage.getItem('coinCount')) {
+    coinCount = parseInt(localStorage.getItem('coinCount'), 10);
+}
 
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
@@ -34,6 +40,7 @@ const carouselSlide = document.querySelector('.carousel-slide');
 const indicators = document.querySelectorAll('.indicator');
 const wordsCountElement = document.getElementById('wordsCount');
 const recordCountElement = document.getElementById('recordCount');
+const coinCountElement = document.getElementById('coinCount');
 
 const infoModal = document.getElementById('infoModal');
 const resetConfirmModal = document.getElementById('resetConfirmModal');
@@ -372,11 +379,16 @@ function adjustHangmanSize() {
 function updateCounts() {
     wordsCountElement.innerHTML = `${wordsCount} <i class="bi bi-check-lg laranja"></i>`;
     recordCountElement.innerHTML = `${recordCount} <i class="bi bi-trophy laranja"></i>`;
+    coinCountElement.innerHTML = `${coinCount} <i class="bi bi-coin"></i>`;
+    // Save coin count to localStorage
+    localStorage.setItem('coinCount', coinCount);
 }
 
 function continueGame() {
     winModal.style.display = 'none';
     wordsCount++;
+    let coinsEarned = maxMistakes - mistakes;
+    coinCount += coinsEarned;
     if (wordsCount > recordCount) {
         recordCount = wordsCount;
     }
