@@ -15,6 +15,7 @@ let recordCount = 0;
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const removeAdsScreen = document.getElementById('removeAdsScreen');
+const storeScreen = document.getElementById('storeScreen');
 const startButton = document.getElementById('startButton');
 const storeButton = document.getElementById('storeButton');
 const removeAdsButton = document.getElementById('removeAdsButton');
@@ -57,7 +58,7 @@ startButton.addEventListener('click', () => {
 
 storeButton.addEventListener('click', () => {
     startScreen.style.display = 'none';
-    removeAdsScreen.style.display = 'flex';
+    storeScreen.style.display = 'flex';
 });
 
 removeAdsButton.addEventListener('click', () => {
@@ -71,7 +72,7 @@ backToStartButton.addEventListener('click', () => {
 });
 
 backToStartButtonStore.addEventListener('click', () => {
-    removeAdsScreen.style.display = 'none';
+    storeScreen.style.display = 'none';
     startScreen.style.display = 'flex';
 });
 
