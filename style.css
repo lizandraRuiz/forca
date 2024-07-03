@@ -118,15 +118,17 @@ button:hover {
     gap: 10px;
 }
 
-.category-box {
+.category-box, .count-box, .quantity-box {
     font-size: 1.2em;
-    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 5px 10px;
     border: 2px solid #ff7f50;
     background-color: #fff3e0;
     border-radius: 5px;
     color: #555555;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
 }
 
 .hangman-drawing {
@@ -470,6 +472,40 @@ button:hover {
 
 .close-lose:hover,
 .close-lose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Words Count Modal styles */
+.close-words-count {
+    color: #aaa;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.close-words-count:hover,
+.close-words-count:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Record Count Modal styles */
+.close-record-count {
+    color: #aaa;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.close-record-count:hover,
+.close-record-count:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

@@ -124,13 +124,11 @@ closeRecordCountModal.addEventListener('click', () => {
 
 wordsCountElement.addEventListener('click', () => {
     document.getElementById('currentWordsCount').textContent = wordsCount;
-    console.log(wordsCountModal.outerHTML);
     wordsCountModal.style.display = 'block';
 });
 
 recordCountElement.addEventListener('click', () => {
     document.getElementById('currentRecordCount').textContent = recordCount;
-    console.log(recordCountModal.className);
     recordCountModal.style.display = 'block';
 });
 
