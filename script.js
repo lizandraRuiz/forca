@@ -152,6 +152,18 @@ window.addEventListener('resize', () => {
     adjustHangmanSize();
 });
 
+window.addEventListener('click', (event) => {
+    if (event.target === infoModal) {
+        infoModal.style.display = 'none';
+    }
+    if (event.target === wordsCountModal) {
+        wordsCountModal.style.display = 'none';
+    }
+    if (event.target === recordCountModal) {
+        recordCountModal.style.display = 'none';
+    }
+});
+
 document.getElementById('nextSlide').addEventListener('click', () => {
     nextSlide();
 });
