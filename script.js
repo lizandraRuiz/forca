@@ -39,11 +39,15 @@ const infoModal = document.getElementById('infoModal');
 const resetConfirmModal = document.getElementById('resetConfirmModal');
 const winModal = document.getElementById('winModal');
 const loseModal = document.getElementById('loseModal');
+const wordsCountModal = document.getElementById('wordsCountModall');
+const recordCountModal = document.getElementById('recordCountModal');
 
 const closeInfoModal = document.querySelector('.close');
 const closeResetModal = document.querySelector('.close-reset');
 const closeWinModal = document.querySelector('.close-win');
 const closeLoseModal = document.querySelector('.close-lose');
+const closeWordsCountModal = document.querySelector('.close-words-count');
+const closeRecordCountModal = document.querySelector('.close-record-count');
 
 const confirmResetButton = document.getElementById('confirmResetButton');
 const continueButton = document.getElementById('continueButton');
@@ -108,6 +112,26 @@ closeLoseModal.addEventListener('click', () => {
     wordsCount = 0;
     updateCounts();
     startGame();
+});
+
+closeWordsCountModal.addEventListener('click', () => {
+    wordsCountModal.style.display = 'none';
+});
+
+closeRecordCountModal.addEventListener('click', () => {
+    recordCountModal.style.display = 'none';
+});
+
+wordsCountElement.addEventListener('click', () => {
+    document.getElementById('currentWordsCount').textContent = wordsCount;
+    console.log(wordsCountModal.outerHTML);
+    wordsCountModal.style.display = 'block';
+});
+
+recordCountElement.addEventListener('click', () => {
+    document.getElementById('currentRecordCount').textContent = recordCount;
+    console.log(recordCountModal.className);
+    recordCountModal.style.display = 'block';
 });
 
 confirmResetButton.addEventListener('click', () => {
