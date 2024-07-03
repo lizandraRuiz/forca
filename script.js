@@ -97,6 +97,24 @@ infoButton.addEventListener('click', () => {
     infoModal.style.display = 'block';
 });
 
+infoModal.addEventListener('click', (e) => {
+    if (e.target === infoModal) {
+        infoModal.style.display = 'none';
+    }
+});
+
+wordsCountModal.addEventListener('click', (e) => {
+    if (e.target === wordsCountModal) {
+        wordsCountModal.style.display = 'none';
+    }
+});
+
+recordCountModal.addEventListener('click', (e) => {
+    if (e.target === recordCountModal) {
+        recordCountModal.style.display = 'none';
+    }
+});
+
 closeInfoModal.addEventListener('click', () => {
     infoModal.style.display = 'none';
 });
@@ -150,18 +168,6 @@ tryAgainButton.addEventListener('click', () => {
 
 window.addEventListener('resize', () => {
     adjustHangmanSize();
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === infoModal) {
-        infoModal.style.display = 'none';
-    }
-    if (event.target === wordsCountModal) {
-        wordsCountModal.style.display = 'none';
-    }
-    if (event.target === recordCountModal) {
-        recordCountModal.style.display = 'none';
-    }
 });
 
 document.getElementById('nextSlide').addEventListener('click', () => {
@@ -221,18 +227,12 @@ function nextSlide() {
     if (currentIndex < 2) {
         currentIndex++;
         updateCarousel();
-    } else {
-        currentIndex = 0;
-        updateCarousel();
     }
 }
 
 function prevSlide() {
     if (currentIndex > 0) {
         currentIndex--;
-        updateCarousel();
-    } else {
-        currentIndex = 2;
         updateCarousel();
     }
 }
@@ -246,6 +246,18 @@ function updateCarousel() {
             indicator.classList.remove('active');
         }
     });
+
+    if (currentIndex === 0) {
+        document.getElementById('prevSlide').style.display = 'none';
+    } else {
+        document.getElementById('prevSlide').style.display = 'block';
+    }
+
+    if (currentIndex === 2) {
+        document.getElementById('nextSlide').style.display = 'none';
+    } else {
+        document.getElementById('nextSlide').style.display = 'block';
+    }
 }
 
 function startGame() {
@@ -364,3 +376,6 @@ function continueGame() {
     updateCounts();
     startGame();
 }
+
+// Initial call to hide prevSlide button
+updateCarousel();
