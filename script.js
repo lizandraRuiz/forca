@@ -101,10 +101,7 @@ closeResetModal.addEventListener('click', () => {
     resetConfirmModal.style.display = 'none';
 });
 
-closeWinModal.addEventListener('click', () => {
-    winModal.style.display = 'none';
-    startGame();
-});
+closeWinModal.addEventListener('click', continueGame);
 
 closeLoseModal.addEventListener('click', () => {
     loseModal.style.display = 'none';
@@ -120,15 +117,7 @@ confirmResetButton.addEventListener('click', () => {
     startGame();
 });
 
-continueButton.addEventListener('click', () => {
-    winModal.style.display = 'none';
-    wordsCount++;
-    if (wordsCount > recordCount) {
-        recordCount = wordsCount;
-    }
-    updateCounts();
-    startGame();
-});
+continueButton.addEventListener('click', continueGame);
 
 tryAgainButton.addEventListener('click', () => {
     loseModal.style.display = 'none';
@@ -330,4 +319,14 @@ function adjustHangmanSize() {
 function updateCounts() {
     wordsCountElement.innerHTML = `${wordsCount} <i class="bi bi-check-lg laranja"></i>`;
     recordCountElement.innerHTML = `${recordCount} <i class="bi bi-trophy laranja"></i>`;
+}
+
+function continueGame() {
+    winModal.style.display = 'none';
+    wordsCount++;
+    if (wordsCount > recordCount) {
+        recordCount = wordsCount;
+    }
+    updateCounts();
+    startGame();
 }
