@@ -29,15 +29,6 @@
                 <i id="resetButton" class="bi bi-arrow-clockwise"></i>
                 <i id="infoButton" class="bi bi-info-circle"></i>
             </div>
-            <div class="header-info">
-                <span id="categoryContainer" class="category-box"></span>
-                <div id="wordsCount" class="words-count">
-                    <div class="count-box">0 <i class="bi bi-check-lg laranja"></i></div>
-                </div>
-                <div id="recordCount" class="record-count">
-                    <div class="count-box">0 <i class="bi bi-trophy laranja"></i></div>
-                </div>
-            </div>
             <div id="hangmanContainer">
                 <svg id="hangmanSvg" class="figure-container">
                     <!-- Rod -->
@@ -61,12 +52,17 @@
                     <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
                 </svg>
             </div>
+            <span id="categoryContainer" class="category-box"></span>
             <div id="wordContainer" class="word-box"></div>
             <div id="message"></div>
             <div id="lettersContainer"></div>
             <div class="side-icons">
                 <div class="icon-container">
                     <div class="quantity-box">500 <i class="bi bi-coin"></i></div>
+                    <div id="wordsCount" class="count-box">0 <i class="bi bi-check-lg laranja"></i></div>
+                </div>
+                <div class="icon-container">
+                    <div id="recordCount" class="count-box">0 <i class="bi bi-trophy laranja"></i></div>
                 </div>
                 <div class="icon-container">
                     <div class="quantity-box">5 <i class="bi bi-lightbulb-fill"></i></div>

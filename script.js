@@ -328,6 +328,6 @@ function adjustHangmanSize() {
 }
 
 function updateCounts() {
-    wordsCountElement.querySelector('.count-box').innerHTML = `${wordsCount} <i class="bi bi-check-lg laranja"></i>`;
-    recordCountElement.querySelector('.count-box').innerHTML = `${recordCount} <i class="bi bi-trophy laranja"></i>`;
+    wordsCountElement.innerHTML = `${wordsCount} <i class="bi bi-check-lg laranja"></i>`;
+    recordCountElement.innerHTML = `${recordCount} <i class="bi bi-trophy laranja"></i>`;
 }
